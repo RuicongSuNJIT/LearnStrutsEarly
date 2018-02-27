@@ -8,7 +8,7 @@
 <title><s:text name="loginPage" /></title>
 </head>
 <body>
-	<s:form action="login">
+	<s:form action="LoginRegister_login">
 		<s:textfield name="username" key="user" />
 		<s:password name="password" key="pass" />
 		<s:submit key="login" />
@@ -18,7 +18,7 @@
 <script type="text/javascript">
 	function register() {
 		var userForm = document.forms[0];
-		userForm.action = "register";
+		userForm.action = "LoginRegister_register";
 	}
 </script>
 </html>

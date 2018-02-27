@@ -8,6 +8,8 @@
 <title><s:text name="succPage" /></title>
 </head>
 <body>
-	<s:property value="tip"/>
+	<s:text name="regisTip">
+		<s:param>${sessionScope.user}</s:param>
+	</s:text>
 </body>
 </html>
