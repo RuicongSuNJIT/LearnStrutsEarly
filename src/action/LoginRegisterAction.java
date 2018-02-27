@@ -1,5 +1,7 @@
 package action;
 
+import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.Result;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -38,11 +40,17 @@ public class LoginRegisterAction extends ActionSupport {
 		this.tip = tip;
 	}
 
+	@Action(value = "register", results = {
+			@Result(name = "success", location = "/registerSuccess.jsp") })
+
 	public String register() throws Exception {
 		ActionContext.getContext().getSession().put("user", getUsername());
 		return SUCCESS;
 	}
 
+	@Action(value = "login", results = {
+			@Result(name = "success", location = "/loginSuccess.jsp"),
+			@Result(name = "error", location = "/error.jsp") })
 	public String login() throws Exception {
 		if ("surc".equals(getUsername()) && "1414213".equals(getPassword())) {
 			ActionContext.getContext().getSession().put("user", getUsername());

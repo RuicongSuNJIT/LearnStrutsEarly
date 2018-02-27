@@ -2,18 +2,8 @@
 <!DOCTYPE struts PUBLIC
         "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
         "http://struts.apache.org/dtds/struts-2.5.dtd">
-
-
 <struts>
 	<constant name="struts.locale" value="zh_CN"></constant>
 	<constant name="struts.custom.i18n.resources" value="mess" />
 	<constant name="struts.i18n.encoding" value="UTF-8" />
-	<package name="surc" extends="struts-default">
-		<global-allowed-methods>regex:.*</global-allowed-methods>
-		<action name="*_*" class="action.{1}Action" method="{2}">
-			<result name="input">/login.jsp</result>
-			<result name="error">/error.jsp</result>
-			<result name="success">/{2}Success.jsp</result>
-		</action>
-	</package>
 </struts>
