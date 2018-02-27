@@ -1,17 +1,18 @@
 package action;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.struts2.interceptor.ServletResponseAware;
+
+import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionContext;
-import com.opensymphony.xwork2.ActionSupport;
 
-public class LoginAction extends ActionSupport {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 7922979648150320921L;
+public class LoginAction implements Action, ServletResponseAware {
 
 	private String username;
 	private String password;
+	private HttpServletResponse response;
 
 	public String getUsername() {
 		return username;
@@ -30,12 +31,21 @@ public class LoginAction extends ActionSupport {
 	}
 
 	@Override
+	public void setServletResponse(HttpServletResponse response) {
+		this.response = response;
+	}
+
+	@Override
 	public String execute() throws Exception {
 
 		if ("surc".equals(getUsername()) && "1414213".equals(getPassword())) {
 			ActionContext.getContext().getSession().put("user", getUsername());
+			Cookie cookie = new Cookie("user", getUsername());
+			cookie.setMaxAge(3600);
+			response.addCookie(cookie);
 			return SUCCESS;
 		}
 		return ERROR;
 	}
+
 }

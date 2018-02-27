@@ -11,5 +11,7 @@
 	<s:text name="succTip">
 		<s:param>${sessionScope.user}</s:param>
 	</s:text>
+	<br />
+	Cookie: ${cookie.user.value}
 </body>
 </html>
