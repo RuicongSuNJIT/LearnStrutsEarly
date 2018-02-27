@@ -8,10 +8,6 @@
 <title><s:text name="succPage" /></title>
 </head>
 <body>
-	<s:text name="succTip">
-		<s:param>${sessionScope.user}</s:param>
-	</s:text>
-	<br />
-	Cookie: ${cookie.user.value}
+	<s:property value="tip"/>
 </body>
 </html>

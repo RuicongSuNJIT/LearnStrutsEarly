@@ -1,19 +1,18 @@
 package action;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.struts2.interceptor.ServletResponseAware;
-
-import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionContext;
+import com.opensymphony.xwork2.ActionSupport;
 
-public class LoginAction implements Action, ServletResponseAware {
+public class LoginAction extends ActionSupport {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7983946561281144939L;
 
 	private String username;
 	private String password;
-	private HttpServletResponse response;
-
+	private String tip;
 	public String getUsername() {
 		return username;
 	}
@@ -30,9 +29,18 @@ public class LoginAction implements Action, ServletResponseAware {
 		this.password = password;
 	}
 
-	@Override
-	public void setServletResponse(HttpServletResponse response) {
-		this.response = response;
+	public String getTip() {
+		return tip;
+	}
+
+	public void setTip(String tip) {
+		this.tip = tip;
+	}
+
+	public String register() throws Exception {
+		ActionContext.getContext().getSession().put("user", getUsername());
+		setTip("恭喜您, " + getUsername() + ", 您已注册成功!");
+		return SUCCESS;
 	}
 
 	@Override
@@ -40,9 +48,7 @@ public class LoginAction implements Action, ServletResponseAware {
 
 		if ("surc".equals(getUsername()) && "1414213".equals(getPassword())) {
 			ActionContext.getContext().getSession().put("user", getUsername());
-			Cookie cookie = new Cookie("user", getUsername());
-			cookie.setMaxAge(3600);
-			response.addCookie(cookie);
+			setTip("欢迎, " + getUsername() + ", 您已登录!");
 			return SUCCESS;
 		}
 		return ERROR;

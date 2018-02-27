@@ -8,10 +8,17 @@
 <title><s:text name="loginPage" /></title>
 </head>
 <body>
-	<s:form action="login" >
-		<s:textfield name="username" key="user"/>
-		<s:password name="password" key="pass"/>
-		<s:submit key="login"/>
+	<s:form action="login">
+		<s:textfield name="username" key="user" />
+		<s:password name="password" key="pass" />
+		<s:submit key="login" />
+		<s:submit key="regist" onclick="register()" />
 	</s:form>
 </body>
+<script type="text/javascript">
+	function register() {
+		var userForm = document.forms[0];
+		userForm.action = "login!register";
+	}
+</script>
 </html>
