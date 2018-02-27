@@ -18,7 +18,7 @@
 <script type="text/javascript">
 	function register() {
 		var userForm = document.forms[0];
-		userForm.action = "login!register";
+		userForm.action = "register";
 	}
 </script>
 </html>

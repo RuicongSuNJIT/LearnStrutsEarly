@@ -3,7 +3,7 @@ package action;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class LoginAction extends ActionSupport {
+public class LoginRegisterAction extends ActionSupport {
 
 	/**
 	 * 

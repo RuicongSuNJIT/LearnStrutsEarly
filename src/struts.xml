@@ -9,12 +9,15 @@
 	<constant name="struts.custom.i18n.resources" value="mess" />
 	<constant name="struts.i18n.encoding" value="UTF-8" />
 	<package name="surc" extends="struts-default">
-		<global-allowed-methods>regex:.*</global-allowed-methods>
-		<action name="login" class="action.LoginAction">
+		<action name="login" class="action.LoginRegisterAction">
+			<result name="input">/login.jsp</result>
+			<result name="error">/error.jsp</result>
+			<result name="success">/welcome.jsp</result>
+		</action>
+		<action name="register" class="action.LoginRegisterAction" method="register">
 			<result name="input">/login.jsp</result>
 			<result name="error">/error.jsp</result>
 			<result name="success">/welcome.jsp</result>
 		</action>
 	</package>
-	<constant name="struts.enable.DynamicMethodInvocation" value="true"></constant>
 </struts>
