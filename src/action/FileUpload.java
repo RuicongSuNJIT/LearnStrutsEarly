@@ -3,6 +3,7 @@ package action;
 import java.io.File;
 
 import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.InterceptorRef;
 import org.apache.struts2.convention.annotation.Result;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -51,8 +52,12 @@ public class FileUpload extends ActionSupport {
 		this.fileSize = fileSize;
 	}
 
-	@Action(value = "fileUpload", results = {
-			@Result(name = "success", location = "/succFileUpload.jsp") })
+	@Action(value = "fileUpload", interceptorRefs = {
+			@InterceptorRef(value = "fileUpload", params = { "allowedTypes",
+					"image/*" }),
+			@InterceptorRef(value = "defaultStack") }, results = {
+					@Result(name = "success", location = "/succFileUpload.jsp"),
+					@Result(name = "input", location = "/fileUpload.jsp") })
 	public String fileUpload() throws Exception {
 		setFileSize(upload.length());
 
