@@ -12,6 +12,7 @@ import dao.BookDao;
 import dao.UserDao;
 import po.Book;
 import po.Person;
+import po.User;
 import po.UserInfo;
 
 public class LearnHibernate extends ActionSupport {
@@ -66,4 +67,14 @@ public class LearnHibernate extends ActionSupport {
 		return SUCCESS;
 	}
 
+	@Action(value = "tableJoinNN", results = {
+			@Result(name = "success", location = "/succHibernate.jsp") })
+	public String tableJoinNN() throws Exception {
+		User user1 = new User();
+		user1.setName("Lsf");
+		User user2 = new User();
+		user2.setName("Hkz");
+		userDao.makeFriends(user1, user2);
+		return SUCCESS;
+	}
 }
