@@ -1,5 +1,7 @@
 package action;
 
+import java.util.List;
+
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
 
@@ -46,4 +48,20 @@ public class LearnHibernate extends ActionSupport {
 		bookDao.insert(book);
 		return SUCCESS;
 	}
+
+	@Action(value = "tableJoin1NLoad", results = {
+			@Result(name = "success", location = "/succHibernate.jsp") })
+	public String tableJoin1NLoad() throws Exception {
+		System.out.println("Load author by ID.");
+		Person author = authorDao.load(1);
+		System.out.println("Lazy Load books.");
+		List<Book> books = author.getBooks();
+		System.out.println("Same author(exact same person object)");
+		Person bookAuthor = books.get(0).getAuthor();
+		System.out.println(author);
+		System.out.println(bookAuthor);
+		return SUCCESS;
+	}
+
+	
 }
