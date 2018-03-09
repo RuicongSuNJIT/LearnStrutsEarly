@@ -3,10 +3,6 @@ package dao;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.PersistenceUnit;
-
-import po.Book;
-import po.Person;
 import po.UserInfo;
 
 public class UserDao {
