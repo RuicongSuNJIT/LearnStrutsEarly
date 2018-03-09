@@ -56,12 +56,14 @@ public class LearnHibernate extends ActionSupport {
 		Person author = authorDao.load(1);
 		System.out.println("Lazy Load books.");
 		List<Book> books = author.getBooks();
+		// try .size();
+		System.out.println("Pick one book.");
+		Book book = books.get(0);
 		System.out.println("Same author(exact same person object)");
-		Person bookAuthor = books.get(0).getAuthor();
+		Person bookAuthor = book.getAuthor();
 		System.out.println(author);
 		System.out.println(bookAuthor);
 		return SUCCESS;
 	}
 
-	
 }
