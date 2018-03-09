@@ -31,4 +31,8 @@ public class UserDao {
 		em.getTransaction().commit();
 		// user1.getFriendsOf().size() = ?
 	}
+
+	public User load(long i) {
+		return em.find(User.class, i);
+	}
 }
