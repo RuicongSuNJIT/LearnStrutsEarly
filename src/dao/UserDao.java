@@ -5,6 +5,8 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceUnit;
 
+import po.Book;
+import po.Person;
 import po.UserInfo;
 
 public class UserDao {
@@ -17,6 +19,7 @@ public class UserDao {
 
 		em.getTransaction().begin();
 		em.persist(userInfo);
+		System.out.println(userInfo.getId());
 		em.getTransaction().commit();
 		System.out.println(userInfo.getId());
 	}

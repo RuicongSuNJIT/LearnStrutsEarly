@@ -8,7 +8,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import dao.UserDao;
 import po.UserInfo;
 
-public class TestHibernate extends ActionSupport {
+public class CreateTable extends ActionSupport {
 
 	/**
 	 * 
@@ -17,8 +17,8 @@ public class TestHibernate extends ActionSupport {
 	
 	private UserDao userDao = new UserDao();
 
-	@Action(value = "testHibernate", results = {
-			@Result(name = "success", location = "/succTestHibernate.jsp") })
+	@Action(value = "createTable", results = {
+			@Result(name = "success", location = "/succHibernate.jsp") })
 
 	public String testHibernate() throws Exception {
 		UserInfo userInfo = new UserInfo();
