@@ -25,12 +25,7 @@ public class Book {
 
 	@ManyToOne
 	private Person author;
-
-	public void initAuthor(Person author) {
-
-		author.getBooks().add(this);
-	}
-
+	
 	public long getId() {
 		return id;
 	}
@@ -61,5 +56,6 @@ public class Book {
 
 	public void setAuthor(Person author) {
 		this.author = author;
+		author.getBooks().add(this);
 	}
 }

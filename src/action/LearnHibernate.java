@@ -39,7 +39,7 @@ public class LearnHibernate extends ActionSupport {
 		Person author = new Person();
 		author.setName("Surc");
 		Book book = new Book();
-		book.initAuthor(author);
+		book.setAuthor(author);
 		book.setTitle("SSx");
 		book.setIsbn("978-7-121-16085-1");
 		authorDao.insert(author);
