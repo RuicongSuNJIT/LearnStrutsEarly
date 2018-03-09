@@ -20,11 +20,15 @@ public class UserDao {
 		em.getTransaction().commit();
 		System.out.println(userInfo.getId());
 	}
+	
+	public void insert(User user) {
+		em.getTransaction().begin();
+		em.persist(user);
+		em.getTransaction().commit();
+	}
 
 	public void makeFriends(User user1, User user2) {
 		em.getTransaction().begin();
-		em.persist(user1);
-		em.persist(user2);
 		user1.addFriend(user2);
 		user2.addFriend(user1);
 		em.flush();

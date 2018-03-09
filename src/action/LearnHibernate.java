@@ -72,8 +72,12 @@ public class LearnHibernate extends ActionSupport {
 	public String tableJoinNNFriends() throws Exception {
 		User user1 = new User();
 		user1.setName("Lsf");
+		userDao.insert(user1);
+		
 		User user2 = new User();
 		user2.setName("Hkz");
+		userDao.insert(user2);
+		
 		userDao.makeFriends(user1, user2);
 		return SUCCESS;
 	}
@@ -81,7 +85,7 @@ public class LearnHibernate extends ActionSupport {
 	@Action(value = "tableJoinNNFriendsLoad", results = {
 			@Result(name = "success", location = "/succHibernate.jsp") })
 	public String tableJoinNNFriendsLoad() throws Exception {
-		System.out.println("Load - User( id = 1)");
+		System.out.println("Load - User( id = 1 )");
 		User user1 = userDao.load(1);
 		System.out.println("Use \"friends\" List");
 		System.out.println("I have " + user1.getFriends().size() +" friends.");
