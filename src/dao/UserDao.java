@@ -3,7 +3,6 @@ package dao;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-
 import po.User;
 import po.UserInfo;
 
@@ -13,6 +12,8 @@ public class UserDao {
 			.createEntityManagerFactory("CRM");
 	private EntityManager em = emf.createEntityManager();
 
+	private static final String QUERY_BY_NAME = "select u from User u where name = :name";
+
 	public void insert(UserInfo userInfo) {
 		em.getTransaction().begin();
 		em.persist(userInfo);
@@ -20,7 +21,7 @@ public class UserDao {
 		em.getTransaction().commit();
 		System.out.println(userInfo.getId());
 	}
-	
+
 	public void insert(User user) {
 		em.getTransaction().begin();
 		em.persist(user);
@@ -38,5 +39,10 @@ public class UserDao {
 
 	public User load(long i) {
 		return em.find(User.class, i);
+	}
+
+	public User loadByName(String name) {
+		return em.createQuery(QUERY_BY_NAME, User.class)
+				.setParameter("name", name).getSingleResult();
 	}
 }

@@ -19,6 +19,7 @@ import po.Product;
 import po.User;
 import po.UserInfo;
 
+@Result(name = "success", location = "/succHibernate.jsp")
 public class LearnHibernate extends ActionSupport {
 
 	/**
@@ -32,8 +33,7 @@ public class LearnHibernate extends ActionSupport {
 	private ProductDao productDao = new ProductDao();
 	private OrderDao orderDao = new OrderDao();
 
-	@Action(value = "createTable", results = {
-			@Result(name = "success", location = "/succHibernate.jsp") })
+	@Action(value = "createTable")
 	public String createTable() throws Exception {
 		UserInfo userInfo = new UserInfo();
 		userInfo.setFName("Ruicong");
@@ -42,8 +42,7 @@ public class LearnHibernate extends ActionSupport {
 		return SUCCESS;
 	}
 
-	@Action(value = "tableJoin1N", results = {
-			@Result(name = "success", location = "/succHibernate.jsp") })
+	@Action(value = "tableJoin1N")
 	public String tableJoin1N() throws Exception {
 		Person author = new Person();
 		author.setName("Surc");
@@ -56,8 +55,7 @@ public class LearnHibernate extends ActionSupport {
 		return SUCCESS;
 	}
 
-	@Action(value = "tableJoin1NLoad", results = {
-			@Result(name = "success", location = "/succHibernate.jsp") })
+	@Action(value = "tableJoin1NLoad")
 	public String tableJoin1NLoad() throws Exception {
 		System.out.println("Load author by ID.");
 		Person author = authorDao.load(1);
@@ -73,8 +71,7 @@ public class LearnHibernate extends ActionSupport {
 		return SUCCESS;
 	}
 
-	@Action(value = "tableJoinNNFriends", results = {
-			@Result(name = "success", location = "/succHibernate.jsp") })
+	@Action(value = "tableJoinNNFriends")
 	public String tableJoinNNFriends() throws Exception {
 		User user1 = new User();
 		user1.setName("Lsf");
@@ -88,8 +85,7 @@ public class LearnHibernate extends ActionSupport {
 		return SUCCESS;
 	}
 
-	@Action(value = "tableJoinNNFriendsLoad", results = {
-			@Result(name = "success", location = "/succHibernate.jsp") })
+	@Action(value = "tableJoinNNFriendsLoad")
 	public String tableJoinNNFriendsLoad() throws Exception {
 		System.out.println("Load - User( id = 1 )");
 		User user1 = userDao.load(1);
@@ -101,8 +97,7 @@ public class LearnHibernate extends ActionSupport {
 		return SUCCESS;
 	}
 
-	@Action(value = "tableJoinNNOrder", results = {
-			@Result(name = "success", location = "/succHibernate.jsp") })
+	@Action(value = "tableJoinNNOrder")
 	public String tableJoinNNOrder() throws Exception {
 		Product product1 = new Product();
 		product1.setName("computer");
@@ -130,8 +125,7 @@ public class LearnHibernate extends ActionSupport {
 		return SUCCESS;
 	}
 
-	@Action(value = "tableJoinNNOrderLoad", results = {
-			@Result(name = "success", location = "/succHibernate.jsp") })
+	@Action(value = "tableJoinNNOrderLoad")
 	public String tableJoinNNOrderLoad() throws Exception {
 		User user = userDao.load(1);
 		user.printOrder();
