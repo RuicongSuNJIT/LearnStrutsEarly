@@ -68,4 +68,13 @@ public class Order {
 	public void setUser(User user) {
 		this.user = user;
 	}
+
+	public static void showOrders(List<Order> orders) {
+		for (Order order : orders) {
+			System.out.println("Order #" + order.getId() + ":");
+			for (Product product : order.getProducts()) {
+				System.out.println("  Product: " + product.getName());
+			}
+		}
+	}
 }
