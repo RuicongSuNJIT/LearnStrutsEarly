@@ -9,9 +9,13 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import dao.AuthorDao;
 import dao.BookDao;
+import dao.OrderDao;
+import dao.ProductDao;
 import dao.UserDao;
 import po.Book;
+import po.Order;
 import po.Person;
+import po.Product;
 import po.User;
 import po.UserInfo;
 
@@ -25,6 +29,8 @@ public class LearnHibernate extends ActionSupport {
 	private UserDao userDao = new UserDao();
 	private AuthorDao authorDao = new AuthorDao();
 	private BookDao bookDao = new BookDao();
+	private ProductDao productDao = new ProductDao();
+	private OrderDao orderDao = new OrderDao();
 
 	@Action(value = "createTable", results = {
 			@Result(name = "success", location = "/succHibernate.jsp") })
@@ -73,11 +79,11 @@ public class LearnHibernate extends ActionSupport {
 		User user1 = new User();
 		user1.setName("Lsf");
 		userDao.insert(user1);
-		
+
 		User user2 = new User();
 		user2.setName("Hkz");
 		userDao.insert(user2);
-		
+
 		userDao.makeFriends(user1, user2);
 		return SUCCESS;
 	}
@@ -88,9 +94,39 @@ public class LearnHibernate extends ActionSupport {
 		System.out.println("Load - User( id = 1 )");
 		User user1 = userDao.load(1);
 		System.out.println("Use \"friends\" List");
-		System.out.println("I have " + user1.getFriends().size() +" friends.");
+		System.out.println("I have " + user1.getFriends().size() + " friends.");
 		System.out.println("Use \"friendOf\" List");
-		System.out.println(user1.getFriendOf().size() + " make friends with me.");
+		System.out
+				.println(user1.getFriendOf().size() + " make friends with me.");
+		return SUCCESS;
+	}
+
+	@Action(value = "tableJoinNNOrder", results = {
+			@Result(name = "success", location = "/succHibernate.jsp") })
+	public String tableJoinNNOrder() throws Exception {
+		Product product1 = new Product();
+		product1.setName("computer");
+		productDao.insert(product1);
+
+		Product product2 = new Product();
+		product2.setName("Soap");
+		productDao.insert(product2);
+
+		Product product3 = new Product();
+		product3.setName("skiing board");
+		productDao.insert(product3);
+
+		User user = userDao.load(1);
+		Order order = new Order();
+		order.setUser(user);
+		order.setDate();
+		order.addProduct(product1);
+		order.addProduct(product2);
+		order.addProduct(product3);
+		orderDao.insert(order);
+
+		// user.getOrders().size() = ?
+
 		return SUCCESS;
 	}
 }

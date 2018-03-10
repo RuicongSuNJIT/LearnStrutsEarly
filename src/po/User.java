@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -35,9 +36,13 @@ public class User {
 					@JoinColumn(name = "person_id") })
 	private List<User> friendOf;
 
+	@OneToMany(mappedBy = "user")
+	private List<Order> myOrders;
+
 	public User() {
 		friendOf = new LinkedList<>();
 		friends = new LinkedList<>();
+		myOrders = new LinkedList<>();
 	}
 
 	public void addFriend(User friend) {
@@ -70,5 +75,13 @@ public class User {
 
 	public List<User> getFriendOf() {
 		return friendOf;
+	}
+
+	public List<Order> getMyOrders() {
+		return myOrders;
+	}
+
+	public void setMyOrders(List<Order> myOrders) {
+		this.myOrders = myOrders;
 	}
 }
