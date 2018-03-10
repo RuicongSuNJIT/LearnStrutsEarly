@@ -49,6 +49,16 @@ public class User {
 		friends.add(friend);
 	}
 
+	public void printOrder() {
+		System.out.println("User - " + name + ":");
+		for (Order order : myOrders) {
+			System.out.println("  Order #" + order.getId() + ":");
+			for (Product product : order.getProducts()) {
+				System.out.println("    Product: " + product.getName());
+			}
+		}
+	}
+
 	public long getId() {
 		return id;
 	}

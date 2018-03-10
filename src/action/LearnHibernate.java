@@ -129,4 +129,12 @@ public class LearnHibernate extends ActionSupport {
 
 		return SUCCESS;
 	}
+
+	@Action(value = "tableJoinNNOrderLoad", results = {
+			@Result(name = "success", location = "/succHibernate.jsp") })
+	public String tableJoinNNOrderLoad() throws Exception {
+		User user = userDao.load(1);
+		user.printOrder();
+		return SUCCESS;
+	}
 }
