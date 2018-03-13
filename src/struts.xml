@@ -3,7 +3,9 @@
         "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
         "http://struts.apache.org/dtds/struts-2.5.dtd">
 <struts>
+<!-- 国际化处理网页显示 -->
 	<constant name="struts.locale" value="zh_CN"></constant>
+	<!--一下指定资源文件，指定了文件名是mess,会通过这里的value + locale的value来找资源文件名 eg:这里是 mess_zh_CN.properties-->
 	<constant name="struts.custom.i18n.resources" value="mess" />
 	<constant name="struts.i18n.encoding" value="UTF-8" />
 </struts>
