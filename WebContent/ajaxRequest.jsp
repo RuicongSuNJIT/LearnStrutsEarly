@@ -16,13 +16,17 @@
 <script type="text/javascript">
 	function ajaxRequest() {
 		$.ajax({
+			//请求的地址
 			'url' : 'ajaxRequest.action',
 			'type' : 'POST',
+			//请求参数
 			'data' : {
 				'username' : '123',
 				'password' : '456'
 			},
+			//接到的返回值的类型
 			'dataType' : 'json',
+			//success代表相应请求的结果。（200http请求成功）而不是ajaxrequest.java里的resultname。如果请求成功调用success函数。success是一种function。
 			'success' : function(data) {
 				$('body').append('<br />')
 				print(data, $('body'), '');

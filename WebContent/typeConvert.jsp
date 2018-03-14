@@ -5,11 +5,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- s:text就是国际化的签，可以直接用name作为国际化的key -->
 <title><s:text name="typeConv" /></title>
 </head>
 <body>
 
 	<s:form action="typeConv">
+	<!-- label直接显示界面上，key国际化后显示界面上 -->
 		<s:textfield name="iNum" key="int" />
 		<s:textfield name="wrapINum" key="wInt" />
 		<s:textfield name="dNum" key="dou" />

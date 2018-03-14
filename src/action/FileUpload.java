@@ -53,8 +53,11 @@ public class FileUpload extends ActionSupport {
 	}
 
 	@Action(value = "fileUpload", interceptorRefs = {
+			//params里的key是你用的拦截器里边有的key名字，是规定的，自己查
 			@InterceptorRef(value = "fileUpload", params = { "allowedTypes",
+					//A/B这种A是大类型eg:application,audio,image,text..B是小类型eg:png..
 					"image/*" }),
+			//使用了拦截器的话要加入defaultstack拦截器
 			@InterceptorRef(value = "defaultStack") }, results = {
 					@Result(name = "success", location = "/succFileUpload.jsp"),
 					@Result(name = "input", location = "/fileUpload.jsp") })
