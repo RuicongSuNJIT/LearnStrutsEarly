@@ -22,7 +22,7 @@ public class Book {
 
 	@NaturalId
 	private String isbn;
-
+//建的这个column不叫id，而是 author_id(book的variable name和对应person里的主键名)
 	@ManyToOne
 	private Person author;
 	
